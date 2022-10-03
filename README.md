@@ -1,0 +1,12 @@
+# Pacman
+- This game is Google's Pacman which I have built in pygame.
+- Preview: 
+- ![pacman](https://user-images.githubusercontent.com/77043443/193549807-9585e094-822d-4844-99e2-2fff889e990a.png)
+- this is my own made game in pygame.
+- this has actual sounds
+- pacman motion is complete
+- game layout is complete
+- food complete
+- yet to add cherry and other fruits
+- yet to add motion in ghosts
+- images are created by me and layout also
