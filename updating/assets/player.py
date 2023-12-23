@@ -1,9 +1,11 @@
 import pygame
 from assets.utils.assets_loader import get_player_images_lists, load_playerImages
+from assets.utils import logger
 
 
 class Player():
     def __init__(self, window, colors: dict, x: int, y: int, width: int, height: int, playerSpeed: int, playerImageDir: str) -> None:
+        self.info()
         self.window = window
         self.colors = colors
         self.x = x
@@ -20,8 +22,8 @@ class Player():
             imageDicts["right"], imageDicts["left"], imageDicts["down"], imageDicts["up"])
         self.playerSpeed = playerSpeed
         self.playerDirection = None
-        self.walkCount = 1
-        self.playerImgList = None
+        self.walkCount = 0
+        self.playerImgList = self.imageLists["right"]
 
     def getDirection(self):
         keys = pygame.key.get_pressed()
@@ -46,7 +48,7 @@ class Player():
             x_velocity = self.playerSpeed * self.playerDirection[0]
             y_velocity = self.playerSpeed * self.playerDirection[1]
             self.updatePosition(x_velocity, y_velocity)
-            self.animate(self.playerImgList)
+        self.animate(self.playerImgList)
 
     def updatePosition(self, x: int, y: int):
         self.x += x
@@ -63,10 +65,14 @@ class Player():
             self.walkCount = 0
         self.window.blit(imageList[self.walkCount //
                          3], (self.pos.x, self.pos.y))
-        self.walkCount += 1
+        if self.playerDirection:
+            self.walkCount += 1
 
     def drawRect(self):
         pygame.draw.rect(self.window, self.colors["red"], self.pos)
 
     def createRect(self, x: int, y: int, width: int, height: int):
         return pygame.Rect(x, y, width, height)
+
+    def info(self):
+        logger.print_magenta("[*] Use the arrow key or [w|a|s|d] keys")
