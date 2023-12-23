@@ -1,6 +1,8 @@
 import pygame
 from pygame.locals import *
 import sys
+from assets import player
+from assets.utils import logger
 
 
 class Game():
@@ -27,9 +29,29 @@ class Game():
             (self.windowWidth, self.windowHeight))
         pygame.display.set_caption("Pacman")
         self.run = True
+        playerData = {
+            "playerStart_x": 10,
+            "playerStart_y": 10,
+            "playerWidth": 18,
+            "playerHeight": 18,
+            "playerSpeed": 1,
+            "imagesDir": "./assets/images/player"
+        }
+        self.player = player.Player(
+            self.window, self.colors, playerData["playerStart_x"], playerData["playerStart_y"], playerData["playerWidth"], playerData["playerHeight"], playerData["playerSpeed"], playerData["imagesDir"])
+
+    def drawGrid(self, step: int, color):
+        for i in range(0, self.windowWidth, step):
+            pygame.draw.line(self.window, color, (i, 0),
+                             (i, self.windowHeight), 1)
+        for j in range(0, self.windowHeight, step):
+            pygame.draw.line(self.window, color, (0, j),
+                             (self.windowWidth, j), 1)
 
     def drawGameWindow(self):
-        self.window.fill(self.colors["white"])
+        self.window.fill(self.colors["black"])
+        self.drawGrid(10, self.colors["pink"])
+        self.player.drawFace()
 
     def startGame(self):
         while self.run:
@@ -53,5 +75,7 @@ class Game():
 
 
 if __name__ == '__main__':
+    logger.print_cyan("[*] Pacman is starting ...")
     gameInstance = Game()
+    logger.print_green("[*] Pacman started ...")
     gameInstance.startGame()
