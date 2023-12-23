@@ -28,7 +28,10 @@ class Game():
         self.window = pygame.display.set_mode(
             (self.windowWidth, self.windowHeight))
         pygame.display.set_caption("Pacman")
+        pygame.mouse.set_visible(False)  # hide mouse on window
         self.run = True
+        self.mouse_x = -1
+        self.mouse_y = -1
         playerData = {
             "playerStart_x": 10,
             "playerStart_y": 10,
@@ -48,10 +51,19 @@ class Game():
             pygame.draw.line(self.window, color, (0, j),
                              (self.windowWidth, j), 1)
 
+    def getMousePosition(self):
+        self.mouse_x, self.mouse_y = pygame.mouse.get_pos()
+
+    def drawMouse(self):
+        self.getMousePosition()
+        pygame.draw.rect(
+            self.window, self.colors["green"], (self.mouse_x, self.mouse_y, 10, 10))
+
     def drawGameWindow(self):
         self.window.fill(self.colors["black"])
-        self.drawGrid(10, self.colors["pink"])
+        self.drawGrid(10, self.colors["red"])
         self.player.drawFace()
+        self.drawMouse()
 
     def startGame(self):
         while self.run:
