@@ -117,15 +117,23 @@ class GameVariables(WindowVar):
         self.obstacle3TopLeft_top = pygame.Rect(400, 30, 70, 20)
         self.obstacle3TopLeft_bottom = pygame.Rect(400, 50, 70, 30)
 
-        self.obstacle2TopRight_top = pygame.Rect(self.winWidth - 200, 30, 50, 20)
-        self.obstacle2TopRight_left = pygame.Rect(self.winWidth - 210, 30, 10, 50)
-        self.obstacle2TopRight_right = pygame.Rect(self.winWidth - 150, 30, 10, 50)
-        self.obstacle2TopRight_bottom = pygame.Rect(self.winWidth - 200, 50, 50, 30)
+        self.obstacle2TopRight_top = pygame.Rect(
+            self.winWidth - 200, 30, 50, 20)
+        self.obstacle2TopRight_left = pygame.Rect(
+            self.winWidth - 210, 30, 10, 50)
+        self.obstacle2TopRight_right = pygame.Rect(
+            self.winWidth - 150, 30, 10, 50)
+        self.obstacle2TopRight_bottom = pygame.Rect(
+            self.winWidth - 200, 50, 50, 30)
 
-        self.obstacle1TopRight_top = pygame.Rect(self.winWidth - 110, 30, 70, 10)
-        self.obstacle1TopRight_left = pygame.Rect(self.winWidth - 120, 30, 10, 10)
-        self.obstacle1TopRight_right = pygame.Rect(self.winWidth - 40, 30, 10, 10)
-        self.obstacle1TopRight_bottom = pygame.Rect(self.winWidth - 120, 40, 90, 10)
+        self.obstacle1TopRight_top = pygame.Rect(
+            self.winWidth - 110, 30, 70, 10)
+        self.obstacle1TopRight_left = pygame.Rect(
+            self.winWidth - 120, 30, 10, 10)
+        self.obstacle1TopRight_right = pygame.Rect(
+            self.winWidth - 40, 30, 10, 10)
+        self.obstacle1TopRight_bottom = pygame.Rect(
+            self.winWidth - 120, 40, 90, 10)
 
         self.WordGTop = pygame.Rect(130, 30, 50, 50)
         self.WordGTopInside = pygame.Rect(130, 80, 50, 10)
@@ -210,45 +218,76 @@ class GameVariables(WindowVar):
         self.rightMidTop4Rect = pygame.Rect(self.winWidth - 90, 130, 90, 10)
         self.rightMidTop5Rect = pygame.Rect(self.winWidth - 100, 130, 10, 40)
         self.rightMidTop6Rect = pygame.Rect(self.winWidth - 90, 160, 90, 10)
-        self.rightMidBottom6Rect = pygame.Rect(self.winWidth - 90, self.winHeight - 170, 90, 10)
-        self.rightMidBottom5Rect = pygame.Rect(self.winWidth - 100, self.winHeight - 170, 10, 40)
-        self.rightMidBottom4Rect = pygame.Rect(self.winWidth - 90, self.winHeight - 140, 90, 10)
-        self.rightMidBottom3Rect = pygame.Rect(self.winWidth - 90, self.winHeight - 110, 90, 10)
-        self.rightMidBottom2Rect = pygame.Rect(self.winWidth - 100, self.winHeight - 110, 10, 40)
-        self.rightMidBottom1Rect = pygame.Rect(self.winWidth - 90, self.winHeight - 80, 80, 10)
+        self.rightMidBottom6Rect = pygame.Rect(
+            self.winWidth - 90, self.winHeight - 170, 90, 10)
+        self.rightMidBottom5Rect = pygame.Rect(
+            self.winWidth - 100, self.winHeight - 170, 10, 40)
+        self.rightMidBottom4Rect = pygame.Rect(
+            self.winWidth - 90, self.winHeight - 140, 90, 10)
+        self.rightMidBottom3Rect = pygame.Rect(
+            self.winWidth - 90, self.winHeight - 110, 90, 10)
+        self.rightMidBottom2Rect = pygame.Rect(
+            self.winWidth - 100, self.winHeight - 110, 10, 40)
+        self.rightMidBottom1Rect = pygame.Rect(
+            self.winWidth - 90, self.winHeight - 80, 80, 10)
 
-        self.obstacle1BottomLeft_top = pygame.Rect(30, self.winHeight - 50, 80, 10)
-        self.obstacle1BottomLeft_left = pygame.Rect(30, self.winHeight - 40, 10, 10)
-        self.obstacle1BottomLeft_right = pygame.Rect(100, self.winHeight - 40, 10, 10)
-        self.obstacle1BottomLeft_bottom = pygame.Rect(40, self.winHeight - 40, 60, 10)
+        self.obstacle1BottomLeft_top = pygame.Rect(
+            30, self.winHeight - 50, 80, 10)
+        self.obstacle1BottomLeft_left = pygame.Rect(
+            30, self.winHeight - 40, 10, 10)
+        self.obstacle1BottomLeft_right = pygame.Rect(
+            100, self.winHeight - 40, 10, 10)
+        self.obstacle1BottomLeft_bottom = pygame.Rect(
+            40, self.winHeight - 40, 60, 10)
 
-        self.obstacle2BottomLeft_top = pygame.Rect(140, self.winHeight - 50, 60, 10)
-        self.obstacle2BottomLeft_left = pygame.Rect(130, self.winHeight - 50, 10, 20)
-        self.obstacle2BottomLeft_right = pygame.Rect(200, self.winHeight - 50, 10, 20)
-        self.obstacle2BottomLeft_bottom = pygame.Rect(140, self.winHeight - 40, 60, 10)
+        self.obstacle2BottomLeft_top = pygame.Rect(
+            140, self.winHeight - 50, 60, 10)
+        self.obstacle2BottomLeft_left = pygame.Rect(
+            130, self.winHeight - 50, 10, 20)
+        self.obstacle2BottomLeft_right = pygame.Rect(
+            200, self.winHeight - 50, 10, 20)
+        self.obstacle2BottomLeft_bottom = pygame.Rect(
+            140, self.winHeight - 40, 60, 10)
 
-        self.obstacle3BottomLeft_top = pygame.Rect(230, self.winHeight - 50, 20, 10)
-        self.obstacle3BottomLeft_left = pygame.Rect(230, self.winHeight - 40, 10, 30)
-        self.obstacle3BottomLeft_right = pygame.Rect(240, self.winHeight - 40, 10, 30)
+        self.obstacle3BottomLeft_top = pygame.Rect(
+            230, self.winHeight - 50, 20, 10)
+        self.obstacle3BottomLeft_left = pygame.Rect(
+            230, self.winHeight - 40, 10, 30)
+        self.obstacle3BottomLeft_right = pygame.Rect(
+            240, self.winHeight - 40, 10, 30)
 
-        self.obstacle4BottomLeft_top = pygame.Rect(280, self.winHeight - 50, 70, 10)
-        self.obstacle4BottomLeft_left = pygame.Rect(270, self.winHeight - 50, 10, 20)
-        self.obstacle4BottomLeft_right = pygame.Rect(350, self.winHeight - 50, 10, 20)
-        self.obstacle4BottomLeft_bottom = pygame.Rect(280, self.winHeight - 40, 70, 10)
+        self.obstacle4BottomLeft_top = pygame.Rect(
+            280, self.winHeight - 50, 70, 10)
+        self.obstacle4BottomLeft_left = pygame.Rect(
+            270, self.winHeight - 50, 10, 20)
+        self.obstacle4BottomLeft_right = pygame.Rect(
+            350, self.winHeight - 50, 10, 20)
+        self.obstacle4BottomLeft_bottom = pygame.Rect(
+            280, self.winHeight - 40, 70, 10)
 
-        self.obstacle2BottomRight_top = pygame.Rect(self.winWidth - 230, self.winHeight - 50, 90, 10)
-        self.obstacle2BottomRight_left = pygame.Rect(self.winWidth - 240, self.winHeight - 50, 10, 20)
-        self.obstacle2BottomRight_right = pygame.Rect(self.winWidth - 140, self.winHeight - 50, 10, 20)
-        self.obstacle2BottomRight_bottom = pygame.Rect(self.winWidth - 230, self.winHeight - 40, 90, 10)
+        self.obstacle2BottomRight_top = pygame.Rect(
+            self.winWidth - 230, self.winHeight - 50, 90, 10)
+        self.obstacle2BottomRight_left = pygame.Rect(
+            self.winWidth - 240, self.winHeight - 50, 10, 20)
+        self.obstacle2BottomRight_right = pygame.Rect(
+            self.winWidth - 140, self.winHeight - 50, 10, 20)
+        self.obstacle2BottomRight_bottom = pygame.Rect(
+            self.winWidth - 230, self.winHeight - 40, 90, 10)
 
-        self.obstacle1BottomRight_top = pygame.Rect(self.winWidth - 100, self.winHeight - 50, 60, 10)
-        self.obstacle1BottomRight_left = pygame.Rect(self.winWidth - 110, self.winHeight - 50, 10, 20)
-        self.obstacle1BottomRight_right = pygame.Rect(self.winWidth - 40, self.winHeight - 50, 10, 20)
-        self.obstacle1BottomRight_bottom = pygame.Rect(self.winWidth - 100, self.winHeight - 40, 60, 10)
+        self.obstacle1BottomRight_top = pygame.Rect(
+            self.winWidth - 100, self.winHeight - 50, 60, 10)
+        self.obstacle1BottomRight_left = pygame.Rect(
+            self.winWidth - 110, self.winHeight - 50, 10, 20)
+        self.obstacle1BottomRight_right = pygame.Rect(
+            self.winWidth - 40, self.winHeight - 50, 10, 20)
+        self.obstacle1BottomRight_bottom = pygame.Rect(
+            self.winWidth - 100, self.winHeight - 40, 60, 10)
 
-        self.rightBottomRect = pygame.Rect(self.winWidth - 10, self.winHeight - 70, 10, 60)
+        self.rightBottomRect = pygame.Rect(
+            self.winWidth - 10, self.winHeight - 70, 10, 60)
 
-        self.bottomRect = pygame.Rect(10, self.winHeight - 10, self.winWidth - 20, 10)
+        self.bottomRect = pygame.Rect(
+            10, self.winHeight - 10, self.winWidth - 20, 10)
 
         self.obs_top = [self.topRect,
                         self.obstacle1TopLeft_top,
@@ -514,10 +553,14 @@ class GameVariables(WindowVar):
 
         self.ghostSize = 18
         self.ghostVel = 1
-        self.redGhostRect = pygame.Rect(self.enemyContainerBottomInside_G.x + 10, 261, self.ghostSize, self.ghostSize)
-        self.blueGhostRect = pygame.Rect(self.enemyContainerTop1Inside_G.x + 10, self.enemyContainerTop1Inside_G.y + 25, self.ghostSize, self.ghostSize)
-        self.orangeGhostRect = pygame.Rect(self.enemyContainerTop2Inside_G.x - 15, self.enemyContainerTop2Inside_G.y + 25, self.ghostSize, self.ghostSize)
-        self.pinkGhostRect = pygame.Rect(self.enemyContainerBottomInside_G.x + 35, self.enemyContainerBottomInside_G.y - 25, self.ghostSize, self.ghostSize)
+        self.redGhostRect = pygame.Rect(
+            self.enemyContainerBottomInside_G.x + 10, 261, self.ghostSize, self.ghostSize)
+        self.blueGhostRect = pygame.Rect(self.enemyContainerTop1Inside_G.x + 10,
+                                         self.enemyContainerTop1Inside_G.y + 25, self.ghostSize, self.ghostSize)
+        self.orangeGhostRect = pygame.Rect(self.enemyContainerTop2Inside_G.x - 15,
+                                           self.enemyContainerTop2Inside_G.y + 25, self.ghostSize, self.ghostSize)
+        self.pinkGhostRect = pygame.Rect(self.enemyContainerBottomInside_G.x + 35,
+                                         self.enemyContainerBottomInside_G.y - 25, self.ghostSize, self.ghostSize)
         self.ghostImg = {
             'redRight': pygame.transform.scale(pygame.image.load("img/pacmanAssets/redGhostright.png"), (self.ghostSize, self.ghostSize)),
             'redLeft': pygame.transform.scale(pygame.image.load("img/pacmanAssets/redGhostleft.png"), (self.ghostSize, self.ghostSize)),
@@ -1118,9 +1161,11 @@ class GameWindow(GameVariables, Food):
 
     def drawGrid(self):
         for i in range(0, self.winWidth, 10):
-            pygame.draw.line(self.window, self.red, (i, 0), (i, self.winHeight), 1)
+            pygame.draw.line(self.window, self.red, (i, 0),
+                             (i, self.winHeight), 1)
         for j in range(0, self.winHeight, 10):
-            pygame.draw.line(self.window, self.red, (0, j), (self.winWidth, j), 1)
+            pygame.draw.line(self.window, self.red,
+                             (0, j), (self.winWidth, j), 1)
 
     def drawPlayer(self):
         # self.window.blit(pygame.transform.scale(pygame.image.load("img/pacmanAssets/pacmanRight.png"), (self.playerRect.width, self.playerRect.height)), (self.playerRect.x, self.playerRect.y))
@@ -1131,35 +1176,45 @@ class GameWindow(GameVariables, Food):
             self.playerRect.x -= self.playerVel
             if self.walkCount >= 18:
                 self.walkCount = 0
-            self.window.blit(self.pacmanMoveLeftImgLst[self.walkCount // 3], (self.playerRect.x, self.playerRect.y))
+            self.window.blit(
+                self.pacmanMoveLeftImgLst[self.walkCount // 3], (self.playerRect.x, self.playerRect.y))
             self.walkCount += 1
         elif self.moveRight:
             self.playerRect.x += self.playerVel
             if self.walkCount >= 18:
                 self.walkCount = 0
-            self.window.blit(self.pacmanMoveRightImgLst[self.walkCount // 3], (self.playerRect.x, self.playerRect.y))
+            self.window.blit(
+                self.pacmanMoveRightImgLst[self.walkCount // 3], (self.playerRect.x, self.playerRect.y))
             self.walkCount += 1
         elif self.moveUp:
             self.playerRect.y -= self.playerVel
             if self.walkCount >= 18:
                 self.walkCount = 0
-            self.window.blit(self.pacmanMoveUpImgLst[self.walkCount // 3], (self.playerRect.x, self.playerRect.y))
+            self.window.blit(
+                self.pacmanMoveUpImgLst[self.walkCount // 3], (self.playerRect.x, self.playerRect.y))
             self.walkCount += 1
         elif self.moveDown:
             self.playerRect.y += self.playerVel
             if self.walkCount >= 18:
                 self.walkCount = 0
-            self.window.blit(self.pacmanMoveDownImgLst[self.walkCount // 3], (self.playerRect.x, self.playerRect.y))
+            self.window.blit(
+                self.pacmanMoveDownImgLst[self.walkCount // 3], (self.playerRect.x, self.playerRect.y))
             self.walkCount += 1
         elif not (self.moveUp and self.moveDown and self.moveRight and self.moveLeft):
-            self.window.blit(self.pacmanMoveRightImgLst[0], (self.playerRect.x, self.playerRect.y))
+            self.window.blit(
+                self.pacmanMoveRightImgLst[0], (self.playerRect.x, self.playerRect.y))
 
     def drawGhost(self):
-        self.window.blit(self.ghostImg['redRight'], (self.redGhostRect.x, self.redGhostRect.y))
-        pygame.draw.rect(self.window, self.red, (self.redGhostRect.x, self.redGhostRect.y, self.ghostSize, self.ghostSize))
-        self.window.blit(self.ghostImg['orangeRight'], (self.orangeGhostRect.x, self.orangeGhostRect.y))
-        self.window.blit(self.ghostImg['blueRight'], (self.blueGhostRect.x, self.blueGhostRect.y))
-        self.window.blit(self.ghostImg['pinkRight'], (self.pinkGhostRect.x, self.pinkGhostRect.y))
+        self.window.blit(self.ghostImg['redRight'],
+                         (self.redGhostRect.x, self.redGhostRect.y))
+        pygame.draw.rect(self.window, self.red, (self.redGhostRect.x,
+                         self.redGhostRect.y, self.ghostSize, self.ghostSize))
+        self.window.blit(
+            self.ghostImg['orangeRight'], (self.orangeGhostRect.x, self.orangeGhostRect.y))
+        self.window.blit(self.ghostImg['blueRight'],
+                         (self.blueGhostRect.x, self.blueGhostRect.y))
+        self.window.blit(self.ghostImg['pinkRight'],
+                         (self.pinkGhostRect.x, self.pinkGhostRect.y))
 
     def drawLayout(self):
         pygame.draw.rect(self.window, self.aqua, self.topRect)
@@ -1206,28 +1261,35 @@ class GameWindow(GameVariables, Food):
 
         pygame.draw.rect(self.window, self.yellow, self.WordO1Top)
         pygame.draw.rect(self.window, self.green, self.WordO1Left)
-        pygame.draw.rect(self.window, self.yellow, (self.WordO1Left.x + 30, self.WordO1Top.y + 90, 10, 20))
+        pygame.draw.rect(self.window, self.yellow,
+                         (self.WordO1Left.x + 30, self.WordO1Top.y + 90, 10, 20))
         pygame.draw.rect(self.window, self.green, self.WordO1Right)
         pygame.draw.rect(self.window, self.yellow, self.WordO1Bottom)
 
         pygame.draw.rect(self.window, self.yellow, self.WordO2Top)
         pygame.draw.rect(self.window, self.green, self.WordO2Left)
-        pygame.draw.rect(self.window, self.yellow, (self.WordO2Left.x + 30, self.WordO2Top.y + 90, 10, 20))
+        pygame.draw.rect(self.window, self.yellow,
+                         (self.WordO2Left.x + 30, self.WordO2Top.y + 90, 10, 20))
         pygame.draw.rect(self.window, self.green, self.WordO2Right)
         pygame.draw.rect(self.window, self.yellow, self.WordO2Bottom)
 
         pygame.draw.rect(self.window, self.green, self.enemyContainerTop1_G)
-        pygame.draw.rect(self.window, self.green, self.enemyContainerTop1Inside_G)
+        pygame.draw.rect(self.window, self.green,
+                         self.enemyContainerTop1Inside_G)
         pygame.draw.line(self.window, self.white, (self.enemyContainerTop1Inside_G.x + self.enemyContainerTop1Inside_G.width, self.enemyContainerTop1Inside_G.y +
                                                    self.enemyContainerTop1Inside_G.height),
                          (self.enemyContainerTop2Inside_G.x, self.enemyContainerTop2Inside_G.y + self.enemyContainerTop2Inside_G.height))
         pygame.draw.rect(self.window, self.green, self.enemyContainerTop2_G)
-        pygame.draw.rect(self.window, self.green, self.enemyContainerTop2Inside_G)
+        pygame.draw.rect(self.window, self.green,
+                         self.enemyContainerTop2Inside_G)
         pygame.draw.rect(self.window, self.yellow, self.enemyContainerLeft_G)
-        pygame.draw.rect(self.window, self.green, self.enemyContainerLeftInside_G)
+        pygame.draw.rect(self.window, self.green,
+                         self.enemyContainerLeftInside_G)
         pygame.draw.rect(self.window, self.yellow, self.enemyContainerRight_G)
-        pygame.draw.rect(self.window, self.green, self.enemyContainerRightInside_G)
-        pygame.draw.rect(self.window, self.green, self.enemyContainerBottomInside_G)
+        pygame.draw.rect(self.window, self.green,
+                         self.enemyContainerRightInside_G)
+        pygame.draw.rect(self.window, self.green,
+                         self.enemyContainerBottomInside_G)
         pygame.draw.rect(self.window, self.green, self.enemyContainerBottom_G)
         pygame.draw.rect(self.window, self.yellow, self.obstacle_GTopLeft)
         pygame.draw.rect(self.window, self.yellow, self.obstacle_G)
@@ -1249,7 +1311,8 @@ class GameWindow(GameVariables, Food):
         pygame.draw.rect(self.window, self.yellow, self.WordLBottom)
 
         pygame.draw.rect(self.window, self.green, self.WordETop)
-        pygame.draw.rect(self.window, self.green, (self.WordEMidLeft.x, self.WordETop.y + 30, 30, 20))
+        pygame.draw.rect(self.window, self.green,
+                         (self.WordEMidLeft.x, self.WordETop.y + 30, 30, 20))
         pygame.draw.rect(self.window, self.yellow, self.WordELeft)
         pygame.draw.rect(self.window, self.green, self.WordEMidTop)
         pygame.draw.rect(self.window, self.green, self.WordEMidBottom)
@@ -1288,32 +1351,45 @@ class GameWindow(GameVariables, Food):
 
         pygame.draw.rect(self.window, self.aqua, self.obstacle1BottomLeft_top)
         pygame.draw.rect(self.window, self.aqua, self.obstacle1BottomLeft_left)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle1BottomLeft_right)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle1BottomLeft_bottom)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle1BottomLeft_right)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle1BottomLeft_bottom)
 
         pygame.draw.rect(self.window, self.aqua, self.obstacle2BottomLeft_top)
         pygame.draw.rect(self.window, self.aqua, self.obstacle2BottomLeft_left)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle2BottomLeft_right)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle2BottomLeft_bottom)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle2BottomLeft_right)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle2BottomLeft_bottom)
 
         pygame.draw.rect(self.window, self.aqua, self.obstacle3BottomLeft_top)
         pygame.draw.rect(self.window, self.aqua, self.obstacle3BottomLeft_left)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle3BottomLeft_right)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle3BottomLeft_right)
 
         pygame.draw.rect(self.window, self.aqua, self.obstacle4BottomLeft_top)
         pygame.draw.rect(self.window, self.aqua, self.obstacle4BottomLeft_left)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle4BottomLeft_right)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle4BottomLeft_bottom)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle4BottomLeft_right)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle4BottomLeft_bottom)
 
         pygame.draw.rect(self.window, self.aqua, self.obstacle2BottomRight_top)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle2BottomRight_left)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle2BottomRight_right)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle2BottomRight_bottom)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle2BottomRight_left)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle2BottomRight_right)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle2BottomRight_bottom)
 
         pygame.draw.rect(self.window, self.aqua, self.obstacle1BottomRight_top)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle1BottomRight_left)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle1BottomRight_right)
-        pygame.draw.rect(self.window, self.aqua, self.obstacle1BottomRight_bottom)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle1BottomRight_left)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle1BottomRight_right)
+        pygame.draw.rect(self.window, self.aqua,
+                         self.obstacle1BottomRight_bottom)
 
         pygame.draw.rect(self.window, self.aqua, self.rightBottomRect)
 
@@ -1451,26 +1527,46 @@ class GameWindow(GameVariables, Food):
                       "bottomRect"]
         messagePosLst = [(self.topRect.x, self.topRect.y),
                          (self.leftTopRect.x, self.leftTopRect.y),
-                         (self.obstacle1TopLeft_top.x, self.obstacle1TopLeft_top.y),
-                         (self.obstacle1TopLeft_left.x, self.obstacle1TopLeft_left.y),
-                         (self.obstacle1TopLeft_right.x, self.obstacle1TopLeft_right.y),
-                         (self.obstacle1TopLeft_bottom.x, self.obstacle1TopLeft_bottom.y),
-                         (self.obstacle2TopLeft_top.x, self.obstacle2TopLeft_top.y),
-                         (self.obstacle2TopLeft_left.x, self.obstacle2TopLeft_left.y),
-                         (self.obstacle2TopLeft_right.x, self.obstacle2TopLeft_right.y),
-                         (self.obstacle2TopLeft_bottom.x, self.obstacle2TopLeft_bottom.y),
-                         (self.obstacle3TopLeft_top.x, self.obstacle3TopLeft_top.y),
-                         (self.obstacle3TopLeft_left.x, self.obstacle3TopLeft_left.y),
-                         (self.obstacle3TopLeft_right.x, self.obstacle3TopLeft_right.y),
-                         (self.obstacle3TopLeft_bottom.x, self.obstacle3TopLeft_bottom.y),
-                         (self.obstacle2TopRight_top.x, self.obstacle2TopRight_top.y),
-                         (self.obstacle2TopRight_left.x, self.obstacle2TopRight_left.y),
-                         (self.obstacle2TopRight_right.x, self.obstacle2TopRight_right.y),
-                         (self.obstacle2TopRight_bottom.x, self.obstacle2TopRight_bottom.y),
-                         (self.obstacle1TopRight_top.x, self.obstacle1TopRight_top.y),
-                         (self.obstacle1TopRight_left.x, self.obstacle1TopRight_left.y),
-                         (self.obstacle1TopRight_right.x, self.obstacle1TopRight_right.y),
-                         (self.obstacle1TopRight_bottom.x, self.obstacle1TopRight_bottom.y),
+                         (self.obstacle1TopLeft_top.x,
+                          self.obstacle1TopLeft_top.y),
+                         (self.obstacle1TopLeft_left.x,
+                          self.obstacle1TopLeft_left.y),
+                         (self.obstacle1TopLeft_right.x,
+                          self.obstacle1TopLeft_right.y),
+                         (self.obstacle1TopLeft_bottom.x,
+                          self.obstacle1TopLeft_bottom.y),
+                         (self.obstacle2TopLeft_top.x,
+                          self.obstacle2TopLeft_top.y),
+                         (self.obstacle2TopLeft_left.x,
+                          self.obstacle2TopLeft_left.y),
+                         (self.obstacle2TopLeft_right.x,
+                          self.obstacle2TopLeft_right.y),
+                         (self.obstacle2TopLeft_bottom.x,
+                          self.obstacle2TopLeft_bottom.y),
+                         (self.obstacle3TopLeft_top.x,
+                          self.obstacle3TopLeft_top.y),
+                         (self.obstacle3TopLeft_left.x,
+                          self.obstacle3TopLeft_left.y),
+                         (self.obstacle3TopLeft_right.x,
+                          self.obstacle3TopLeft_right.y),
+                         (self.obstacle3TopLeft_bottom.x,
+                          self.obstacle3TopLeft_bottom.y),
+                         (self.obstacle2TopRight_top.x,
+                          self.obstacle2TopRight_top.y),
+                         (self.obstacle2TopRight_left.x,
+                          self.obstacle2TopRight_left.y),
+                         (self.obstacle2TopRight_right.x,
+                          self.obstacle2TopRight_right.y),
+                         (self.obstacle2TopRight_bottom.x,
+                          self.obstacle2TopRight_bottom.y),
+                         (self.obstacle1TopRight_top.x,
+                          self.obstacle1TopRight_top.y),
+                         (self.obstacle1TopRight_left.x,
+                          self.obstacle1TopRight_left.y),
+                         (self.obstacle1TopRight_right.x,
+                          self.obstacle1TopRight_right.y),
+                         (self.obstacle1TopRight_bottom.x,
+                          self.obstacle1TopRight_bottom.y),
                          (self.WordGTop.x, self.WordGTop.y),
                          (self.WordGTopInside.x, self.WordGTopInside.y),
                          (self.WordGLeft.x, self.WordGLeft.y),
@@ -1491,29 +1587,44 @@ class GameWindow(GameVariables, Food):
                          (self.WordO2Left.x, self.WordO2Left.y),
                          (self.WordO2Right.x, self.WordO2Right.y),
                          (self.WordO2Bottom.x, self.WordO2Bottom.y),
-                         (self.enemyContainerTop1_G.x, self.enemyContainerTop1_G.y),
-                         (self.enemyContainerTop1Inside_G.x, self.enemyContainerTop1Inside_G.y),
-                         (self.enemyContainerTop2_G.x, self.enemyContainerTop2_G.y),
-                         (self.enemyContainerTop2Inside_G.x, self.enemyContainerTop2Inside_G.y),
-                         (self.enemyContainerLeft_G.x, self.enemyContainerLeft_G.y),
-                         (self.enemyContainerLeftInside_G.x, self.enemyContainerLeftInside_G.y),
-                         (self.enemyContainerRight_G.x, self.enemyContainerRight_G.y),
-                         (self.enemyContainerRightInside_G.x, self.enemyContainerRightInside_G.y),
-                         (self.enemyContainerBottom_G.x, self.enemyContainerBottom_G.y),
-                         (self.enemyContainerBottomInside_G.x, self.enemyContainerBottomInside_G.y),
+                         (self.enemyContainerTop1_G.x,
+                          self.enemyContainerTop1_G.y),
+                         (self.enemyContainerTop1Inside_G.x,
+                          self.enemyContainerTop1Inside_G.y),
+                         (self.enemyContainerTop2_G.x,
+                          self.enemyContainerTop2_G.y),
+                         (self.enemyContainerTop2Inside_G.x,
+                          self.enemyContainerTop2Inside_G.y),
+                         (self.enemyContainerLeft_G.x,
+                          self.enemyContainerLeft_G.y),
+                         (self.enemyContainerLeftInside_G.x,
+                          self.enemyContainerLeftInside_G.y),
+                         (self.enemyContainerRight_G.x,
+                          self.enemyContainerRight_G.y),
+                         (self.enemyContainerRightInside_G.x,
+                          self.enemyContainerRightInside_G.y),
+                         (self.enemyContainerBottom_G.x,
+                          self.enemyContainerBottom_G.y),
+                         (self.enemyContainerBottomInside_G.x,
+                          self.enemyContainerBottomInside_G.y),
                          (self.obstacle_GTopLeft.x, self.obstacle_GTopLeft.y),
                          (self.obstacle_G.x, self.obstacle_G.y),
                          (self.obstacle_GTopBottom.x, self.obstacle_GTopBottom.y),
                          (self.obstacle_GTopRight.x, self.obstacle_GTopRight.y),
                          (self.obstacle_GLeft_top.x, self.obstacle_GLeft_top.y),
                          (self.obstacle_GLeft_left.x, self.obstacle_GLeft_left.y),
-                         (self.obstacle_GLeft_right.x, self.obstacle_GLeft_right.y),
+                         (self.obstacle_GLeft_right.x,
+                          self.obstacle_GLeft_right.y),
                          (self.obstacle_GRight_top.x, self.obstacle_GRight_top.y),
-                         (self.obstacle_GRight_left.x, self.obstacle_GRight_left.y),
-                         (self.obstacle_GRight_right.x, self.obstacle_GRight_right.y),
-                         (self.obstacle_GBottomLeft.x, self.obstacle_GBottomLeft.y),
+                         (self.obstacle_GRight_left.x,
+                          self.obstacle_GRight_left.y),
+                         (self.obstacle_GRight_right.x,
+                          self.obstacle_GRight_right.y),
+                         (self.obstacle_GBottomLeft.x,
+                          self.obstacle_GBottomLeft.y),
                          (self.obstacle_GBottom.x, self.obstacle_GBottom.y),
-                         (self.obstacle_GBottomRight.x, self.obstacle_GBottomRight.y),
+                         (self.obstacle_GBottomRight.x,
+                          self.obstacle_GBottomRight.y),
                          (self.WordLTop.x, self.WordLTop.y),
                          (self.WordLLeft.x, self.WordLLeft.y),
                          (self.WordLRight.x, self.WordLRight.y),
@@ -1552,29 +1663,52 @@ class GameWindow(GameVariables, Food):
                          (self.rightMidBottom3Rect.x, self.rightMidBottom3Rect.y),
                          (self.rightMidBottom2Rect.x, self.rightMidBottom2Rect.y),
                          (self.rightMidBottom1Rect.x, self.rightMidBottom1Rect.y),
-                         (self.obstacle1BottomLeft_top.x, self.obstacle1BottomLeft_top.y),
-                         (self.obstacle1BottomLeft_left.x, self.obstacle1BottomLeft_left.y),
-                         (self.obstacle1BottomLeft_right.x, self.obstacle1BottomLeft_right.y),
-                         (self.obstacle1BottomLeft_bottom.x, self.obstacle1BottomLeft_bottom.y),
-                         (self.obstacle2BottomLeft_top.x, self.obstacle2BottomLeft_top.y),
-                         (self.obstacle2BottomLeft_left.x, self.obstacle2BottomLeft_left.y),
-                         (self.obstacle2BottomLeft_right.x, self.obstacle2BottomLeft_right.y),
-                         (self.obstacle2BottomLeft_bottom.x, self.obstacle2BottomLeft_bottom.y),
-                         (self.obstacle3BottomLeft_top.x, self.obstacle3BottomLeft_top.y),
-                         (self.obstacle3BottomLeft_left.x, self.obstacle3BottomLeft_left.y),
-                         (self.obstacle3BottomLeft_right.x, self.obstacle3BottomLeft_right.y),
-                         (self.obstacle4BottomLeft_top.x, self.obstacle4BottomLeft_top.y),
-                         (self.obstacle4BottomLeft_left.x, self.obstacle4BottomLeft_left.y),
-                         (self.obstacle4BottomLeft_right.x, self.obstacle4BottomLeft_right.y),
-                         (self.obstacle4BottomLeft_bottom.x, self.obstacle4BottomLeft_bottom.y),
-                         (self.obstacle2BottomRight_top.x, self.obstacle2BottomRight_top.y),
-                         (self.obstacle2BottomRight_left.x, self.obstacle2BottomRight_left.y),
-                         (self.obstacle2BottomRight_right.x, self.obstacle2BottomRight_right.y),
-                         (self.obstacle2BottomRight_bottom.x, self.obstacle2BottomRight_bottom.y),
-                         (self.obstacle1BottomRight_top.x, self.obstacle1BottomRight_top.y),
-                         (self.obstacle1BottomRight_left.x, self.obstacle1BottomRight_left.y),
-                         (self.obstacle1BottomRight_right.x, self.obstacle1BottomRight_right.y),
-                         (self.obstacle1BottomRight_bottom.x, self.obstacle1BottomRight_bottom.y),
+                         (self.obstacle1BottomLeft_top.x,
+                          self.obstacle1BottomLeft_top.y),
+                         (self.obstacle1BottomLeft_left.x,
+                          self.obstacle1BottomLeft_left.y),
+                         (self.obstacle1BottomLeft_right.x,
+                          self.obstacle1BottomLeft_right.y),
+                         (self.obstacle1BottomLeft_bottom.x,
+                          self.obstacle1BottomLeft_bottom.y),
+                         (self.obstacle2BottomLeft_top.x,
+                          self.obstacle2BottomLeft_top.y),
+                         (self.obstacle2BottomLeft_left.x,
+                          self.obstacle2BottomLeft_left.y),
+                         (self.obstacle2BottomLeft_right.x,
+                          self.obstacle2BottomLeft_right.y),
+                         (self.obstacle2BottomLeft_bottom.x,
+                          self.obstacle2BottomLeft_bottom.y),
+                         (self.obstacle3BottomLeft_top.x,
+                          self.obstacle3BottomLeft_top.y),
+                         (self.obstacle3BottomLeft_left.x,
+                          self.obstacle3BottomLeft_left.y),
+                         (self.obstacle3BottomLeft_right.x,
+                          self.obstacle3BottomLeft_right.y),
+                         (self.obstacle4BottomLeft_top.x,
+                          self.obstacle4BottomLeft_top.y),
+                         (self.obstacle4BottomLeft_left.x,
+                          self.obstacle4BottomLeft_left.y),
+                         (self.obstacle4BottomLeft_right.x,
+                          self.obstacle4BottomLeft_right.y),
+                         (self.obstacle4BottomLeft_bottom.x,
+                          self.obstacle4BottomLeft_bottom.y),
+                         (self.obstacle2BottomRight_top.x,
+                          self.obstacle2BottomRight_top.y),
+                         (self.obstacle2BottomRight_left.x,
+                          self.obstacle2BottomRight_left.y),
+                         (self.obstacle2BottomRight_right.x,
+                          self.obstacle2BottomRight_right.y),
+                         (self.obstacle2BottomRight_bottom.x,
+                          self.obstacle2BottomRight_bottom.y),
+                         (self.obstacle1BottomRight_top.x,
+                          self.obstacle1BottomRight_top.y),
+                         (self.obstacle1BottomRight_left.x,
+                          self.obstacle1BottomRight_left.y),
+                         (self.obstacle1BottomRight_right.x,
+                          self.obstacle1BottomRight_right.y),
+                         (self.obstacle1BottomRight_bottom.x,
+                          self.obstacle1BottomRight_bottom.y),
                          (self.rightBottomRect.x, self.rightBottomRect.y),
                          (self.bottomRect.x, self.bottomRect.y)]
         for message, messagePos in zip(messageLst, messagePosLst):
@@ -1867,18 +2001,22 @@ class GameWindow(GameVariables, Food):
         # max score = 5540
 
     def showScore(self):
-        scoreMsg = self.font.render(f"score: {self.score - 20}", True, self.blue)
-        self.window.blit(scoreMsg, (self.obstacle2TopLeft_top.x, self.obstacle2TopLeft_top.y + 10))
+        scoreMsg = self.font.render(
+            f"score: {self.score - 20}", True, self.blue)
+        self.window.blit(scoreMsg, (self.obstacle2TopLeft_top.x,
+                         self.obstacle2TopLeft_top.y + 10))
 
     def drawFood(self):
         for foodPos in self.foodPosLst:
-            pygame.draw.circle(self.window, self.white, (foodPos.x, foodPos.y), foodPos.width // 2)
+            pygame.draw.circle(self.window, self.white,
+                               (foodPos.x, foodPos.y), foodPos.width // 2)
 
     def playerEatFood_logic(self):
         for foodItems in self.foodPosLst:
             if self.playerRect.colliderect(foodItems):
                 if self.score > 20:
-                    foodEatSound = pygame.mixer.Sound(self.assets['chomp_sound'])
+                    foodEatSound = pygame.mixer.Sound(
+                        self.assets['chomp_sound'])
                     pygame.mixer.Channel(1).play(foodEatSound, 0)
                     foodEatSound.set_volume(0.9)
                 self.foodPosLst.pop(self.foodPosLst.index(foodItems))
@@ -1888,7 +2026,8 @@ class GameWindow(GameVariables, Food):
         if len(self.foodPosLst) == 0:
             font1 = pygame.font.SysFont('monospace', 16, True, False)
             win_msg = font1.render("YOU WON!", True, self.red)
-            self.window.blit(win_msg, (self.enemyContainerBottomInside_G.x, self.enemyContainerBottomInside_G.y))
+            self.window.blit(
+                win_msg, (self.enemyContainerBottomInside_G.x, self.enemyContainerBottomInside_G.y))
 
     def drawGame(self):
         self.window.fill(self.black)
@@ -1908,7 +2047,8 @@ class GameWindow(GameVariables, Food):
         self.window.blit(pygame.image.load("img/pacmanAssets/bg.png"), (0, 0))
         font1 = pygame.font.SysFont('monospace', 16, True, False)
         get_ready_msg = font1.render("READY!", True, self.red)
-        self.window.blit(get_ready_msg, (self.enemyContainerBottomInside_G.x + 7, self.enemyContainerBottomInside_G.y))
+        self.window.blit(get_ready_msg, (self.enemyContainerBottomInside_G.x +
+                         7, self.enemyContainerBottomInside_G.y))
         pygame.mixer.music.load(self.assets['beginning_sound'])
         pygame.mixer.music.set_volume(0.7)
         pygame.mixer.music.play()
