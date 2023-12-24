@@ -3,6 +3,7 @@ from pygame.locals import *
 import sys
 from assets import player
 from assets.utils import logger
+from assets import layout
 
 
 class Game():
@@ -15,6 +16,7 @@ class Game():
             "red": (255, 0, 0),
             "blue": (0, 0, 255),
             "green": (0, 255, 0),
+            "yellow": (255, 255, 0),
             "grey": (192, 192, 192),
             "silver": (188, 198, 204),
             "charcoalBlue": (54, 69, 79),
@@ -30,6 +32,8 @@ class Game():
         pygame.display.set_caption("Pacman")
         pygame.mouse.set_visible(False)  # hide mouse on window
         self.run = True
+        self.gridWidth = 10
+        self.gridHeight = 10
         self.mouse_x = -1
         self.mouse_y = -1
         playerData = {
@@ -42,12 +46,18 @@ class Game():
         }
         self.player = player.Player(
             self.window, self.colors, playerData["playerStart_x"], playerData["playerStart_y"], playerData["playerWidth"], playerData["playerHeight"], playerData["playerSpeed"], playerData["imagesDir"])
+        layoutData = {
+            "layoutDir": "./assets/data",
+            "fileName": "pacman_world.json"
+        }
+        self.pacmanWorld = layout.Layout(
+            self.window, self.colors, self.gridWidth, self.gridHeight, layoutData["layoutDir"], layoutData["fileName"])
 
-    def drawGrid(self, step: int, color):
-        for i in range(0, self.windowWidth, step):
+    def drawGrid(self, color):
+        for i in range(0, self.windowWidth, self.gridWidth):
             pygame.draw.line(self.window, color, (i, 0),
                              (i, self.windowHeight), 1)
-        for j in range(0, self.windowHeight, step):
+        for j in range(0, self.windowHeight, self.gridHeight):
             pygame.draw.line(self.window, color, (0, j),
                              (self.windowWidth, j), 1)
 
@@ -57,15 +67,30 @@ class Game():
     def drawMouse(self):
         self.getMousePosition()
         pygame.draw.rect(
-            self.window, self.colors["green"], (self.mouse_x, self.mouse_y, 10, 10))
+            self.window, self.colors["green"], (self.mouse_x - (self.mouse_x % self.gridWidth), self.mouse_y - (self.mouse_y % self.gridHeight), 10, 10))
 
-    def drawGameWindow(self):
+    def drawGameWindow(self, layoutStatus: bool):
         self.window.fill(self.colors["black"])
-        self.drawGrid(10, self.colors["red"])
-        self.player.drawFace()
-        self.drawMouse()
+        if layoutStatus:
+            self.drawGrid(self.colors["red"])
+            self.pacmanWorld.createLayout(self.mouse_x, self.mouse_y)
+            self.drawMouse()
+        else:
+            self.pacmanWorld.drawLayout()
+            self.player.drawFace()
+
+    def takeLayoutStatus(self):
+        logger.print_cyan(f"[?] Do you want to create a new game layout")
+        s = input("(yes|no): ")
+        return True if s == "yes" else False
 
     def startGame(self):
+        layoutStatus = self.takeLayoutStatus()
+        if layoutStatus:
+            self.pacmanWorld.info()
+        else:
+            self.pacmanWorld.loadLayout()
+
         while self.run:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -73,7 +98,7 @@ class Game():
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE:
                         self.run = False
-            self.drawGameWindow()
+            self.drawGameWindow(layoutStatus)
             self.updateDisplay()
             self.clock.tick(self.fps)
         self.stopGame()
