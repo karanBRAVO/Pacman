@@ -109,6 +109,8 @@ class Layout():
             self.color = self.colors['yellow']
         elif keys[pygame.K_g]:
             self.color = self.colors['green']
+        elif keys[pygame.K_b]:
+            self.color = self.colors['black']
 
     def updateMousePositionCoordinates(self, mouseX, mouseY):
         self.mouse_x = mouseX

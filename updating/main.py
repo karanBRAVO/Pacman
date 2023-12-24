@@ -70,12 +70,13 @@ class Game():
             self.window, self.colors["green"], (self.mouse_x - (self.mouse_x % self.gridWidth), self.mouse_y - (self.mouse_y % self.gridHeight), 10, 10))
 
     def drawGameWindow(self, layoutStatus: bool):
-        self.window.fill(self.colors["black"])
         if layoutStatus:
+            self.window.fill(self.colors["white"])
             self.drawGrid(self.colors["red"])
             self.pacmanWorld.createLayout(self.mouse_x, self.mouse_y)
             self.drawMouse()
         else:
+            self.window.fill(self.colors["black"])
             self.pacmanWorld.drawLayout()
             self.pacmanWorld.drawFood()
             self.player.drawFace()
