@@ -51,7 +51,7 @@ class Game():
             "fileName": "pacman_world.json"
         }
         self.pacmanWorld = layout.Layout(
-            self.window, self.colors, self.gridWidth, self.gridHeight, layoutData["layoutDir"], layoutData["fileName"])
+            self.window, self.windowWidth, self.windowHeight, self.colors, self.gridWidth, self.gridHeight, layoutData["layoutDir"], layoutData["fileName"])
 
     def drawGrid(self, color):
         for i in range(0, self.windowWidth, self.gridWidth):
@@ -77,6 +77,7 @@ class Game():
             self.drawMouse()
         else:
             self.pacmanWorld.drawLayout()
+            self.pacmanWorld.drawFood()
             self.player.drawFace()
 
     def takeLayoutStatus(self):

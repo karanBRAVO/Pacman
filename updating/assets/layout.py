@@ -5,8 +5,10 @@ from assets.utils import logger
 
 
 class Layout():
-    def __init__(self, window, colors: dict, boxWidth: int, boxHeight: int, layoutDir: str, fileName: str) -> None:
+    def __init__(self, window, windowWidth, windowHeight, colors: dict, boxWidth: int, boxHeight: int, layoutDir: str, fileName: str) -> None:
         self.window = window
+        self.windowWidth = windowWidth
+        self.windowHeight = windowHeight
         self.colors = colors
         self.boxWidth = boxWidth
         self.boxHeight = boxHeight
@@ -18,6 +20,23 @@ class Layout():
         self.boxes = {}
         self.layoutDir = layoutDir
         self.fileName = fileName
+        self.food = {}
+        self.foodWidth = 3
+        self.foodHeight = 3
+
+    def createFood(self):
+        for x in range(0, self.windowWidth, self.boxWidth):
+            for y in range(0, self.windowHeight, self.boxHeight):
+                key = f"box_{x}_{y}"
+                if key not in self.boxes:
+                    _x = x + (self.boxWidth // 2) - (self.foodWidth // 2)
+                    _y = y + (self.boxHeight // 2) - (self.foodHeight // 2)
+                    self.food[key] = self.getRect(
+                        _x, _y, self.foodWidth, self.foodHeight)
+
+    def drawFood(self):
+        for key in list(self.food):
+            self.drawRect(self.colors["white"], self.food[key])
 
     def loadLayout(self):
         try:
@@ -65,6 +84,8 @@ class Layout():
             color = self.boxes[color_box][0]
             box = self.boxes[color_box][1]
             self.drawRect(color, box)
+
+        self.createFood()
 
     def createBoxes(self, keys):
         self.changePenColor(keys)
