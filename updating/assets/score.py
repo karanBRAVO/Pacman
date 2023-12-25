@@ -2,7 +2,7 @@ import pygame
 
 
 class Score():
-    def __init__(self, window, color: tuple = (255, 0, 0), x: int = 1, scorePos: tuple = (100, 20)) -> None:
+    def __init__(self, window, color: tuple = (255, 0, 0), x: int = 1, scorePos: tuple = (0, 0)) -> None:
         self.window = window
         self.score = 0
         self.font = pygame.font.SysFont('monospace', 11, True, False)

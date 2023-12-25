@@ -37,16 +37,17 @@ class Game():
         self.mouse_x = -1
         self.mouse_y = -1
         playerData = {
-            "playerStart_x": 10,
-            "playerStart_y": 10,
-            "playerWidth": 18,
-            "playerHeight": 18,
+            "playerStart_x": 430,
+            "playerStart_y": 261,
+            "playerWidth": 10,
+            "playerHeight": 10,
             "playerSpeed": 1,
             "imagesDir": "./assets/images/player"
         }
         self.player = player.Player(
             self.window, self.windowWidth, self.windowHeight, self.colors, playerData["playerStart_x"], playerData["playerStart_y"], playerData["playerWidth"], playerData["playerHeight"], playerData["playerSpeed"], playerData["imagesDir"])
-        self.gameScore = score.Score(self.window, self.colors["red"], 1)
+        self.gameScore = score.Score(
+            self.window, self.colors["red"], 1, (220, 40))
         layoutData = {
             "layoutDir": "./assets/data",
             "fileName": "pacman_world.json"
@@ -68,11 +69,11 @@ class Game():
     def drawMouse(self):
         self.getMousePosition()
         pygame.draw.rect(
-            self.window, self.colors["green"], (self.mouse_x - (self.mouse_x % self.gridWidth), self.mouse_y - (self.mouse_y % self.gridHeight), 10, 10))
+            self.window, self.colors["blue"], (self.mouse_x - (self.mouse_x % self.gridWidth), self.mouse_y - (self.mouse_y % self.gridHeight), 10, 10))
 
     def drawGameWindow(self, layoutStatus: bool):
         if layoutStatus:
-            self.window.fill(self.colors["white"])
+            self.window.fill(self.colors["charcoalBlue"])
             self.drawGrid(self.colors["red"])
             self.pacmanWorld.createLayout(self.mouse_x, self.mouse_y)
             self.drawMouse()
@@ -80,6 +81,7 @@ class Game():
             self.window.fill(self.colors["black"])
             self.pacmanWorld.drawLayout()
             self.pacmanWorld.drawFood()
+            self.pacmanWorld.detectPlayerWallCollision(self.player)
             self.player.drawFace()
             self.gameScore.showScore(self.player.pos, self.pacmanWorld.food)
 

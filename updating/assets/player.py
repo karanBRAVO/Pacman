@@ -15,6 +15,15 @@ class Player():
         self.width = width
         self.height = height
         self.pos = self.createRect(self.x, self.y, self.width, self.height)
+        self.wh = 4
+        self.right = self.createRect(
+            self.pos.right - self.wh, self.y + self.wh, self.wh, self.height - 2 * self.wh)
+        self.left = self.createRect(
+            self.pos.left, self.y + self.wh, self.wh, self.height - 2 * self.wh)
+        self.down = self.createRect(
+            self.x + self.wh, self.pos.bottom - self.wh, self.width - 2 * self.wh, self.wh)
+        self.up = self.createRect(
+            self.x + self.wh, self.y, self.width - 2 * self.wh, self.wh)
         self.directions = {"right": (1, 0),
                            "left": (-1, 0),
                            "down": (0, 1),
@@ -26,22 +35,44 @@ class Player():
         self.playerDirection = None
         self.walkCount = 0
         self.playerImgList = self.imageLists["right"]
+        self.canMove = {
+            "right": True,
+            "left": True,
+            "down": True,
+            "up": True,
+        }
 
     def getDirection(self):
         keys = pygame.key.get_pressed()
+        print(self.canMove)
 
-        if keys[pygame.K_RIGHT] or keys[pygame.K_d]:
+        if (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and self.canMove["right"]:
             self.playerDirection = self.directions["right"]
             self.playerImgList = self.imageLists["right"]
-        elif keys[pygame.K_LEFT] or keys[pygame.K_a]:
+            self.resetCanMove()
+        elif (keys[pygame.K_LEFT] or keys[pygame.K_a]) and self.canMove["left"]:
             self.playerDirection = self.directions["left"]
             self.playerImgList = self.imageLists["left"]
-        elif keys[pygame.K_DOWN] or keys[pygame.K_s]:
+            self.resetCanMove()
+        elif (keys[pygame.K_DOWN] or keys[pygame.K_s]) and self.canMove["down"]:
             self.playerDirection = self.directions["down"]
             self.playerImgList = self.imageLists["down"]
-        elif keys[pygame.K_UP] or keys[pygame.K_w]:
+            self.resetCanMove()
+        elif (keys[pygame.K_UP] or keys[pygame.K_w]) and self.canMove["up"]:
             self.playerDirection = self.directions["up"]
             self.playerImgList = self.imageLists["up"]
+            self.resetCanMove()
+
+    def resetCanMove(self):
+        self.canMove["right"] = True
+        self.canMove["left"] = True
+        self.canMove["down"] = True
+        self.canMove["up"] = True
+
+    def moveIn3Directions(self, d1: str, d2: str, d3: str):
+        self.canMove[d1] = True
+        self.canMove[d2] = True
+        self.canMove[d3] = True
 
     def move(self):
         self.getDirection()
@@ -52,13 +83,16 @@ class Player():
             self.updatePosition(x_velocity, y_velocity)
         self.animate(self.playerImgList)
         self.detectGameOffsets()
+        self.updateRects()
+
+    def stopMoving(self, direction: str):
+        self.playerDirection = None
+        self.canMove[direction] = False
 
     def detectGameOffsets(self):
         def changePos(x: int, y: int):
             self.x = x
             self.y = y
-            self.pos.x = x
-            self.pos.y = y
 
         if self.x + self.width < 0:
             changePos(self.windowWidth, self.y)
@@ -71,17 +105,29 @@ class Player():
 
         elif self.y > self.windowHeight:
             changePos(self.x, 0)
-        
-        print(self.x, self.y)
 
     def updatePosition(self, x: int, y: int):
         self.x += x
         self.y += y
+
+    def updateRects(self):
         self.pos.x = self.x
         self.pos.y = self.y
+        self.right.x = self.pos.right - self.wh
+        self.right.y = self.y + self.wh
+        self.left.x = self.pos.left
+        self.left.y = self.y + self.wh
+        self.down.x = self.x + self.wh
+        self.down.y = self.pos.bottom - self.wh
+        self.up.x = self.x + self.wh
+        self.up.y = self.y
 
     def drawFace(self):
-        self.drawRect()
+        # self.drawRect(self.colors["red"], self.pos)
+        # self.drawRect(self.colors["red"], self.right)
+        # self.drawRect(self.colors["blue"], self.left)
+        # self.drawRect(self.colors["green"], self.down)
+        # self.drawRect(self.colors["yellow"], self.up)
         self.move()
 
     def animate(self, imageList: []):
@@ -92,8 +138,8 @@ class Player():
         if self.playerDirection:
             self.walkCount += 1
 
-    def drawRect(self):
-        pygame.draw.rect(self.window, self.colors["red"], self.pos)
+    def drawRect(self, color, pos):
+        pygame.draw.rect(self.window, color, pos)
 
     def createRect(self, x: int, y: int, width: int, height: int):
         return pygame.Rect(x, y, width, height)

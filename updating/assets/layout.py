@@ -21,8 +21,8 @@ class Layout():
         self.layoutDir = layoutDir
         self.fileName = fileName
         self.food = {}
-        self.foodWidth = 3
-        self.foodHeight = 3
+        self.foodWidth = 2
+        self.foodHeight = 2
 
     def createFood(self):
         for x in range(0, self.windowWidth, self.boxWidth):
@@ -85,6 +85,25 @@ class Layout():
             color = self.boxes[color_box][0]
             box = self.boxes[color_box][1]
             self.drawRect(color, box)
+
+    def detectPlayerWallCollision(self, player):
+        for key in list(self.boxes):
+            box = self.boxes[key][1]
+            if player.playerDirection == player.directions["right"] and player.right.colliderect(box):
+                player.stopMoving("right")
+                player.moveIn3Directions("left", "down", "up")
+
+            elif player.playerDirection == player.directions["left"] and player.left.colliderect(box):
+                player.stopMoving("left")
+                player.moveIn3Directions("right", "down", "up")
+
+            elif player.playerDirection == player.directions["down"] and player.down.colliderect(box):
+                player.stopMoving("down")
+                player.moveIn3Directions("right", "left", "up")
+
+            elif player.playerDirection == player.directions["up"] and player.up.colliderect(box):
+                player.stopMoving("up")
+                player.moveIn3Directions("right", "left", "down")
 
     def createBoxes(self, keys):
         self.changePenColor(keys)
