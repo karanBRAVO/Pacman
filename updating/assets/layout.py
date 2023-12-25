@@ -51,6 +51,7 @@ class Layout():
             f.close()
             logger.print_green(
                 f"[+] Layout loaded from {self.layoutDir}/{self.fileName}")
+            self.createFood()
         except Exception as e:
             logger.print_cyan(
                 "[-] Unable to load layout from {self.layoutDir}/{self.fileName} | Create a new layout")
@@ -84,8 +85,6 @@ class Layout():
             color = self.boxes[color_box][0]
             box = self.boxes[color_box][1]
             self.drawRect(color, box)
-
-        self.createFood()
 
     def createBoxes(self, keys):
         self.changePenColor(keys)
@@ -124,4 +123,5 @@ class Layout():
 
     def info(self):
         logger.print_yellow("[*] Press Alt + Shift + l to save the layout")
-        logger.print_yellow("[*] q -> aqua | y -> yellow | g -> green")
+        logger.print_yellow(
+            "[*] q -> aqua | y -> yellow | g -> green | b -> black")

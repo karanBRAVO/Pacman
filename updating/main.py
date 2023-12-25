@@ -3,7 +3,7 @@ from pygame.locals import *
 import sys
 from assets import player
 from assets.utils import logger
-from assets import layout
+from assets import layout, score
 
 
 class Game():
@@ -46,6 +46,7 @@ class Game():
         }
         self.player = player.Player(
             self.window, self.colors, playerData["playerStart_x"], playerData["playerStart_y"], playerData["playerWidth"], playerData["playerHeight"], playerData["playerSpeed"], playerData["imagesDir"])
+        self.gameScore = score.Score(self.window, self.colors["red"], 1)
         layoutData = {
             "layoutDir": "./assets/data",
             "fileName": "pacman_world.json"
@@ -80,6 +81,7 @@ class Game():
             self.pacmanWorld.drawLayout()
             self.pacmanWorld.drawFood()
             self.player.drawFace()
+            self.gameScore.showScore(self.player.pos, self.pacmanWorld.food)
 
     def takeLayoutStatus(self):
         logger.print_cyan(f"[?] Do you want to create a new game layout")
