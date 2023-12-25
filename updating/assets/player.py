@@ -4,9 +4,11 @@ from assets.utils import logger
 
 
 class Player():
-    def __init__(self, window, colors: dict, x: int, y: int, width: int, height: int, playerSpeed: int, playerImageDir: str) -> None:
+    def __init__(self, window, windowWidth, windowHeight, colors: dict, x: int, y: int, width: int, height: int, playerSpeed: int, playerImageDir: str) -> None:
         self.info()
         self.window = window
+        self.windowWidth = windowWidth
+        self.windowHeight = windowHeight
         self.colors = colors
         self.x = x
         self.y = y
@@ -49,6 +51,28 @@ class Player():
             y_velocity = self.playerSpeed * self.playerDirection[1]
             self.updatePosition(x_velocity, y_velocity)
         self.animate(self.playerImgList)
+        self.detectGameOffsets()
+
+    def detectGameOffsets(self):
+        def changePos(x: int, y: int):
+            self.x = x
+            self.y = y
+            self.pos.x = x
+            self.pos.y = y
+
+        if self.x + self.width < 0:
+            changePos(self.windowWidth, self.y)
+
+        elif self.x > self.windowWidth:
+            changePos(0, self.y)
+
+        elif self.y + self.height < 0:
+            changePos(self.x, self.windowHeight)
+
+        elif self.y > self.windowHeight:
+            changePos(self.x, 0)
+        
+        print(self.x, self.y)
 
     def updatePosition(self, x: int, y: int):
         self.x += x

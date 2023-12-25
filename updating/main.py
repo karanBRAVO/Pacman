@@ -45,7 +45,7 @@ class Game():
             "imagesDir": "./assets/images/player"
         }
         self.player = player.Player(
-            self.window, self.colors, playerData["playerStart_x"], playerData["playerStart_y"], playerData["playerWidth"], playerData["playerHeight"], playerData["playerSpeed"], playerData["imagesDir"])
+            self.window, self.windowWidth, self.windowHeight, self.colors, playerData["playerStart_x"], playerData["playerStart_y"], playerData["playerWidth"], playerData["playerHeight"], playerData["playerSpeed"], playerData["imagesDir"])
         self.gameScore = score.Score(self.window, self.colors["red"], 1)
         layoutData = {
             "layoutDir": "./assets/data",
