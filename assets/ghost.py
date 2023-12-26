@@ -21,7 +21,7 @@ def get_ghosts(window, colors: dict, gridWidth: int, gridHeight: int, speeds: li
 
 def drawAllGhosts(adjList: dict, parent: dict, visited: dict, player, ghosts: dict):
     for ghost in ghosts:
-        ghosts[ghost].drawGhost(adjList, parent, visited, player)
+        ghosts[ghost].drawGhost(adjList, parent, visited, player, ghosts)
 
 
 class Ghost():
@@ -94,11 +94,12 @@ class Ghost():
 
         self.createTask(parent, startNode, endNode)
 
-    def detectPlayerGhostCollision(self, player):
+    def detectPlayerGhostCollision(self, player, ghosts):
         if self.pos.colliderect(player.pos):
             player.reduceLifeCount()
             player.reset(player.resetPosition)
-            self.reset(self.resetPosition)
+            for ghost in ghosts:
+                ghosts[ghost].reset(ghosts[ghost].resetPosition)
 
     def move(self, adjList: dict, parent: dict, visited: dict, player):
         if len(self.task) > 0:
@@ -139,14 +140,14 @@ class Ghost():
         self.pos.x = self.x
         self.pos.y = self.y
 
-    def drawGhost(self, adjList: dict, parent: dict, visited: dict, player):
+    def drawGhost(self, adjList: dict, parent: dict, visited: dict, player, ghosts):
         # self.drawRect(self.colors[self.face], self.pos, 5)
         # self.showTask()
 
         self.window.blit(
             self.images[self.faceDirection], (self.pos.x, self.pos.y))
         self.move(adjList, parent, visited, player)
-        self.detectPlayerGhostCollision(player)
+        self.detectPlayerGhostCollision(player, ghosts)
 
     def showTask(self):
         for box in self.task:
