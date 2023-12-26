@@ -1,4 +1,5 @@
 import pygame
+from assets.utils.soundPlayer import SoundPlayer
 
 
 class Score():
@@ -9,6 +10,7 @@ class Score():
         self.color = color
         self.x = x
         self.scorePos = scorePos
+        self.sound_player = SoundPlayer()
 
     def showScore(self, player: pygame.Rect, food: dict):
         score = self.font.render(f"score: {self.score}", True, self.color)
@@ -19,6 +21,7 @@ class Score():
         isColliding = self.detectCollision(food, player)
         if isColliding[1]:
             self.score += self.x
+            self.sound_player.playSound('eatFruit_sound')
             food.pop(isColliding[0])
 
     def detectCollision(self, food: dict, player: pygame.Rect):

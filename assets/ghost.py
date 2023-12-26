@@ -1,5 +1,6 @@
 import pygame
 from assets.utils.assets_loader import load_ghostImages
+from assets.utils.soundPlayer import SoundPlayer
 from queue import Queue
 import re
 
@@ -46,6 +47,7 @@ class Ghost():
         self.q = Queue(-1)
         self.task = []
         self.faceDirection = "right"
+        self.sound_player = SoundPlayer()
 
     def reset(self, resetPosition: tuple = (0, 0)):
         self.faceDirection = "right"
@@ -96,6 +98,8 @@ class Ghost():
 
     def detectPlayerGhostCollision(self, player, ghosts):
         if self.pos.colliderect(player.pos):
+            self.sound_player.playSound('extraPac_sound')
+            self.sound_player.takePauseForSomeTime(1_100)
             player.reduceLifeCount()
             player.reset(player.resetPosition)
             for ghost in ghosts:

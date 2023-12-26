@@ -2,14 +2,13 @@ import pygame
 from pygame.locals import *
 import sys
 from assets import player
-from assets.utils import logger
+from assets.utils import logger, soundPlayer
 from assets import layout, score, ghost
 
 
 class Game():
     def __init__(self) -> None:
         pygame.init()
-        pygame.mixer.init()
         self.colors = {
             "white": (255, 255, 255),
             "black": (0, 0, 0),
@@ -24,17 +23,6 @@ class Game():
             "aqua": (0, 255, 255),
             "orange": (255, 165, 0),
         }
-        soundsDir = "./assets/sounds"
-        self.sounds = {
-            'beginning_sound': f"{soundsDir}/pacman_beginning.wav",
-            'siren_sound': f"{soundsDir}/pacman_siren.mp3",
-            'chomp_sound': f"{soundsDir}/pacman_chomp_new.wav",
-            'eatFruit_sound': f"{soundsDir}/pacman_eatfruit.wav",
-            'eatGhost_sound': f"{soundsDir}/pacman_eatghost.wav",
-            'death_sound': f"{soundsDir}/pacman_death.wav",
-            'intermission_sound': f"{soundsDir}/pacman_intermission.wav",
-            'extraPac_sound': f"{soundsDir}/pacman_extrapac.wav",
-        }
         self.clock = pygame.time.Clock()
         self.fps = 60
         self.windowWidth = 750
@@ -43,6 +31,9 @@ class Game():
             (self.windowWidth, self.windowHeight))
         pygame.display.set_caption("Pacman")
         pygame.mouse.set_visible(False)  # hide mouse on window
+        self.startingImagePath = "./assets/images/bg.png"
+        self.startingImage = pygame.image.load(self.startingImagePath)
+        self.font = pygame.font.SysFont('monospace', 16, True, False)
         self.run = True
         self.gridWidth = 10
         self.gridHeight = 10
@@ -68,6 +59,7 @@ class Game():
             self.window, self.windowWidth, self.windowHeight, self.colors, self.gridWidth, self.gridHeight, layoutData["layoutDir"], layoutData["fileName"])
         self.ghosts = ghost.get_ghosts(
             self.window, self.colors, self.gridWidth, self.gridHeight)
+        self.sound_player = soundPlayer.SoundPlayer()
 
     def drawGrid(self, color):
         for i in range(0, self.windowWidth, self.gridWidth):
@@ -102,9 +94,13 @@ class Game():
                 self.pacmanWorld.adjList, self.pacmanWorld.parent, self.pacmanWorld.visited, self.player, self.ghosts)
             if self.player.checkWin(self.pacmanWorld.food):
                 logger.print_green("You won!")
+                self.sound_player.playSoundAtChannel(1, 'intermission_sound')
+                self.sound_player.takePauseForSomeTime(5_100)
                 self.stopGame()
             if self.player.checkLose():
                 logger.print_magenta("You Lost!")
+                self.sound_player.playSoundAtChannel(1, 'death_sound')
+                self.sound_player.takePauseForSomeTime(1_100)
                 self.stopGame()
             self.player.showLifeCount()
 
@@ -118,7 +114,9 @@ class Game():
         if layoutStatus:
             self.pacmanWorld.info()
         else:
+            self.starting()
             self.pacmanWorld.loadLayout()
+            self.sound_player.playSoundAtChannel(0, 'siren_sound')
 
         while self.run:
             for event in pygame.event.get():
@@ -132,6 +130,13 @@ class Game():
             self.clock.tick(self.fps)
         self.stopGame()
 
+    def starting(self):
+        self.window.blit(self.startingImage, (0, 0))
+        readyMessage = self.font.render("READY!", True, self.colors["red"])
+        self.window.blit(readyMessage, (407, 240))
+        self.sound_player.playSound('beginning_sound')
+        self.sound_player.takePauseForSomeTime(4_500)
+
     def updateDisplay(self):
         pygame.display.update()
 
@@ -141,7 +146,7 @@ class Game():
 
 
 if __name__ == '__main__':
-    logger.print_cyan("[*] Pacman is starting ...")
+    logger.print_cyan("[*] Game is loading ...")
     gameInstance = Game()
-    logger.print_green("[*] Pacman started ...")
+    logger.print_green("[*] Game loaded ...")
     gameInstance.startGame()

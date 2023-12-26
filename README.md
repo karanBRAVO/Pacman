@@ -26,7 +26,6 @@ make sure you have installed the `python` and the `pygame` library.
   python pacMan.py
   ```
 
-## Preview: 
+## Preview
 
 ![pacman](https://user-images.githubusercontent.com/77043443/193549807-9585e094-822d-4844-99e2-2fff889e990a.png)
-
