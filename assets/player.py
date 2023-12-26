@@ -4,12 +4,13 @@ from assets.utils import logger
 
 
 class Player():
-    def __init__(self, window, windowWidth, windowHeight, colors: dict, x: int, y: int, width: int, height: int, playerSpeed: int, playerImageDir: str) -> None:
+    def __init__(self, window, windowWidth, windowHeight, colors: dict, x: int, y: int, width: int, height: int, playerSpeed: int, playerImageDir: str, lifePos: tuple = (0, 0)) -> None:
         self.info()
         self.window = window
         self.windowWidth = windowWidth
         self.windowHeight = windowHeight
         self.colors = colors
+        self.resetPosition = (x, y)
         self.x = x
         self.y = y
         self.width = width
@@ -41,6 +42,35 @@ class Player():
             "down": True,
             "up": True,
         }
+        self.font = pygame.font.SysFont('monospace', 11, True, False)
+        self.lifeCount = 3
+        self.lifePos = lifePos
+
+    def reset(self, resetPosition: tuple = (0, 0)):
+        self.x = resetPosition[0]
+        self.y = resetPosition[1]
+        self.updateRects()
+        self.walkCount = 0
+        self.playerDirection = None
+        self.playerImgList = self.imageLists["right"]
+
+    def showLifeCount(self):
+        life = self.font.render(
+            f"life: {self.lifeCount}", True, self.colors["blue"])
+        self.window.blit(life, self.lifePos)
+
+    def checkLose(self):
+        if self.lifeCount == 0:
+            return True
+        return False
+
+    def checkWin(self, food: dict):
+        if not food:
+            return True
+        return False
+
+    def reduceLifeCount(self):
+        self.lifeCount -= 1
 
     def getDirection(self):
         keys = pygame.key.get_pressed()

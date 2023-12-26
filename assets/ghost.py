@@ -30,6 +30,7 @@ class Ghost():
         self.gridWidth = gridWidth
         self.gridHeight = gridHeight
         self.colors = colors
+        self.resetPosition = (x, y)
         self.x = x
         self.y = y
         self.width = width
@@ -45,6 +46,15 @@ class Ghost():
         self.q = Queue(-1)
         self.task = []
         self.faceDirection = "right"
+
+    def reset(self, resetPosition: tuple = (0, 0)):
+        self.faceDirection = "right"
+        self.task.clear()
+        self.current_direction = None
+        self.x = resetPosition[0]
+        self.y = resetPosition[1]
+        self.pos.x = self.x
+        self.pos.y = self.y
 
     def createTask(self, Parent: dict, start: str, end: str):
         while end and end != start:
@@ -83,6 +93,12 @@ class Ghost():
                     self.q.put(neighbour)
 
         self.createTask(parent, startNode, endNode)
+
+    def detectPlayerGhostCollision(self, player):
+        if self.pos.colliderect(player.pos):
+            player.reduceLifeCount()
+            player.reset(player.resetPosition)
+            self.reset(self.resetPosition)
 
     def move(self, adjList: dict, parent: dict, visited: dict, player):
         if len(self.task) > 0:
@@ -130,6 +146,7 @@ class Ghost():
         self.window.blit(
             self.images[self.faceDirection], (self.pos.x, self.pos.y))
         self.move(adjList, parent, visited, player)
+        self.detectPlayerGhostCollision(player)
 
     def showTask(self):
         for box in self.task:

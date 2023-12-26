@@ -57,9 +57,9 @@ class Game():
             "imagesDir": "./assets/images/player"
         }
         self.player = player.Player(
-            self.window, self.windowWidth, self.windowHeight, self.colors, playerData["playerStart_x"], playerData["playerStart_y"], playerData["playerWidth"], playerData["playerHeight"], playerData["playerSpeed"], playerData["imagesDir"])
+            self.window, self.windowWidth, self.windowHeight, self.colors, playerData["playerStart_x"], playerData["playerStart_y"], playerData["playerWidth"], playerData["playerHeight"], playerData["playerSpeed"], playerData["imagesDir"], (220, 45))
         self.gameScore = score.Score(
-            self.window, self.colors["red"], 1, (220, 40))
+            self.window, self.colors["red"], 1, (220, 30))
         layoutData = {
             "layoutDir": "./assets/data",
             "fileName": "pacman_world.json"
@@ -100,6 +100,13 @@ class Game():
             self.gameScore.showScore(self.player.pos, self.pacmanWorld.food)
             ghost.drawAllGhosts(
                 self.pacmanWorld.adjList, self.pacmanWorld.parent, self.pacmanWorld.visited, self.player, self.ghosts)
+            if self.player.checkWin(self.pacmanWorld.food):
+                logger.print_green("You won!")
+                self.stopGame()
+            if self.player.checkLose():
+                logger.print_magenta("You Lost!")
+                self.stopGame()
+            self.player.showLifeCount()
 
     def takeLayoutStatus(self):
         logger.print_cyan(f"[?] Do you want to create a new game layout")
