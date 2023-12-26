@@ -2,6 +2,7 @@ import pygame
 import json
 import sys
 from assets.utils import logger
+import re
 
 
 class Layout():
@@ -23,6 +24,45 @@ class Layout():
         self.food = {}
         self.foodWidth = 2
         self.foodHeight = 2
+        self.adjList = {}
+        self.visited = {}
+        self.parent = {}
+
+    def showNodes(self):
+        for node in self.adjList:
+            node = re.findall(r'\d+', node)
+            node = [int(num) for num in node]
+            self.drawRect(self.colors["blue"], self.getRect(
+                node[0], node[1], self.boxWidth // 2, self.boxHeight // 2))
+
+    def createAdjacencyList(self):
+        def addNode(key: str, node: str):
+            if key not in self.adjList:
+                self.adjList[key] = [node]
+                self.visited[key] = False
+                self.parent[key] = "box_-1_-1"
+            else:
+                self.adjList[key].append(node)
+
+        for x in range(0, self.windowWidth, self.boxWidth):
+            for y in range(0, self.windowHeight, self.boxHeight):
+                currentNode = f"box_{x}_{y}"
+                if currentNode not in self.boxes:
+                    rightNode = f"box_{x+self.boxWidth}_{y}"
+                    if x + self.boxWidth < self.windowWidth and rightNode not in self.boxes:
+                        addNode(currentNode, rightNode)
+
+                    leftNode = f"box_{x-self.boxWidth}_{y}"
+                    if x - self.boxWidth >= 0 and leftNode not in self.boxes:
+                        addNode(currentNode, leftNode)
+
+                    downNode = f"box_{x}_{y+self.boxHeight}"
+                    if y + self.boxHeight < self.windowHeight and downNode not in self.boxes:
+                        addNode(currentNode, downNode)
+
+                    upNode = f"box_{x}_{y-self.boxHeight}"
+                    if y - self.boxHeight >= 0 and upNode not in self.boxes:
+                        addNode(currentNode, upNode)
 
     def createFood(self):
         for x in range(0, self.windowWidth, self.boxWidth):
@@ -52,7 +92,9 @@ class Layout():
             logger.print_green(
                 f"[+] Layout loaded from {self.layoutDir}/{self.fileName}")
             self.createFood()
+            self.createAdjacencyList()
         except Exception as e:
+            print(e)
             logger.print_cyan(
                 "[-] Unable to load layout from {self.layoutDir}/{self.fileName} | Create a new layout")
 
@@ -85,6 +127,7 @@ class Layout():
             color = self.boxes[color_box][0]
             box = self.boxes[color_box][1]
             self.drawRect(color, box)
+        # self.showNodes()
 
     def detectPlayerWallCollision(self, player):
         for key in list(self.boxes):
@@ -115,7 +158,7 @@ class Layout():
             if keys[pygame.K_LCTRL]:
                 if key in self.boxes:
                     self.boxes.pop(key)
-            elif key not in self.boxes:
+            elif key not in self.boxes and x >= 0 and x < self.windowWidth and y >= 0 and y < self.windowHeight:
                 box = self.getRect(x, y, self.boxWidth, self.boxHeight)
                 color_box = [self.color, box]
                 self.boxes[f"box_{x}_{y}"] = color_box

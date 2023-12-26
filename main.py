@@ -3,7 +3,7 @@ from pygame.locals import *
 import sys
 from assets import player
 from assets.utils import logger
-from assets import layout, score
+from assets import layout, score, ghost
 
 
 class Game():
@@ -22,6 +22,18 @@ class Game():
             "charcoalBlue": (54, 69, 79),
             "pink": (255, 0, 255),
             "aqua": (0, 255, 255),
+            "orange": (255, 165, 0),
+        }
+        soundsDir = "./assets/sounds"
+        self.sounds = {
+            'beginning_sound': f"{soundsDir}/pacman_beginning.wav",
+            'siren_sound': f"{soundsDir}/pacman_siren.mp3",
+            'chomp_sound': f"{soundsDir}/pacman_chomp_new.wav",
+            'eatFruit_sound': f"{soundsDir}/pacman_eatfruit.wav",
+            'eatGhost_sound': f"{soundsDir}/pacman_eatghost.wav",
+            'death_sound': f"{soundsDir}/pacman_death.wav",
+            'intermission_sound': f"{soundsDir}/pacman_intermission.wav",
+            'extraPac_sound': f"{soundsDir}/pacman_extrapac.wav",
         }
         self.clock = pygame.time.Clock()
         self.fps = 60
@@ -41,7 +53,7 @@ class Game():
             "playerStart_y": 261,
             "playerWidth": 10,
             "playerHeight": 10,
-            "playerSpeed": 1,
+            "playerSpeed": 0.65,
             "imagesDir": "./assets/images/player"
         }
         self.player = player.Player(
@@ -54,6 +66,8 @@ class Game():
         }
         self.pacmanWorld = layout.Layout(
             self.window, self.windowWidth, self.windowHeight, self.colors, self.gridWidth, self.gridHeight, layoutData["layoutDir"], layoutData["fileName"])
+        self.ghosts = ghost.get_ghosts(
+            self.window, self.colors, self.gridWidth, self.gridHeight)
 
     def drawGrid(self, color):
         for i in range(0, self.windowWidth, self.gridWidth):
@@ -84,6 +98,8 @@ class Game():
             self.pacmanWorld.detectPlayerWallCollision(self.player)
             self.player.drawFace()
             self.gameScore.showScore(self.player.pos, self.pacmanWorld.food)
+            ghost.drawAllGhosts(
+                self.pacmanWorld.adjList, self.pacmanWorld.parent, self.pacmanWorld.visited, self.player, self.ghosts)
 
     def takeLayoutStatus(self):
         logger.print_cyan(f"[?] Do you want to create a new game layout")

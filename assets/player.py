@@ -15,7 +15,7 @@ class Player():
         self.width = width
         self.height = height
         self.pos = self.createRect(self.x, self.y, self.width, self.height)
-        self.wh = 4
+        self.wh = 2
         self.right = self.createRect(
             self.pos.right - self.wh, self.y + self.wh, self.wh, self.height - 2 * self.wh)
         self.left = self.createRect(
@@ -44,7 +44,6 @@ class Player():
 
     def getDirection(self):
         keys = pygame.key.get_pressed()
-        print(self.canMove)
 
         if (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and self.canMove["right"]:
             self.playerDirection = self.directions["right"]

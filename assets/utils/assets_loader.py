@@ -1,6 +1,26 @@
 import pygame
 
 
+def load_ghostImages(imageDir: str, width: int, height: int):
+    redGhost = {
+        "right": pygame.transform.scale(pygame.image.load(f"{imageDir}/redGhostright.png"), (width, height)),
+        "left": pygame.transform.scale(pygame.image.load(f"{imageDir}/redGhostleft.png"), (width, height)),
+    }
+    blueGhost = {
+        "right": pygame.transform.scale(pygame.image.load(f"{imageDir}/blueGhostright.png"), (width, height)),
+        "left": pygame.transform.scale(pygame.image.load(f"{imageDir}/blueGhostleft.png"), (width, height)),
+    }
+    orangeGhost = {
+        "right": pygame.transform.scale(pygame.image.load(f"{imageDir}/orangeGhostright.png"), (width, height)),
+        "left": pygame.transform.scale(pygame.image.load(f"{imageDir}/orangeGhostleft.png"), (width, height)),
+    }
+    pinkGhost = {
+        "right": pygame.transform.scale(pygame.image.load(f"{imageDir}/pinkGhostright.png"), (width, height)),
+        "left": pygame.transform.scale(pygame.image.load(f"{imageDir}/pinkGhostleft.png"), (width, height)),
+    }
+    return {"red": redGhost, "blue": blueGhost, "orange": orangeGhost, "pink": pinkGhost}
+
+
 def get_player_images_lists(playerRightImg: dict, playerLeftImg: dict, playerDownImg: dict, playerUpImg: dict):
     pacmanMoveRightImgLst = [playerRightImg['pr'], playerRightImg['pr1'], playerRightImg['pr2'], playerRightImg['pr3'], playerRightImg['pr4'],
                              playerRightImg['pr5']]
