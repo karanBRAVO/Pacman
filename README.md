@@ -35,4 +35,26 @@ the script will ask you to load the layout or to create a new layout enter yes o
 
 ![pacman](https://user-images.githubusercontent.com/77043443/193549807-9585e094-822d-4844-99e2-2fff889e990a.png)
 
-### ©️ Karan Yadav 2023
+## Virtual Environment Setup (recommended)
+
+1. Install the `python3-venv`
+
+   ```bash
+   sudo apt install python3-venv
+   ```
+
+2. Create the virtual env.
+
+   ```bash
+   python3 -m venv myenv
+   ```
+
+3. Activate the env.
+
+   ```bash
+   source myenv/bin/activate
+   ```
+
+**note**: to deactivate type _`deactivate`_ in terminal
+
+### ©️ Karan Yadav 2023 - ♾️
